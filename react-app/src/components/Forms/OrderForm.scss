@@ -1,0 +1,43 @@
+.order-form {
+  padding: 0 20px;
+  font: 16px Arial, serif;
+
+  label, input {
+    width: 70%;
+    display: block;
+  }
+
+  .text-input, .select {
+    margin-bottom: 10px;
+
+    input, select {
+      margin-top: 4px;
+      padding: 4px;
+      border: 1px solid #818080;
+      outline: none;
+    }
+
+    input {
+      box-shadow: 0 0 0 30px #fff inset;
+    }
+
+    input:focus {
+      background-color: #e6ebeb;
+    }
+
+    .error-input {
+      color: #ff6a87;
+      padding: 3px 0 0 10px;
+      font-size: 13px;
+    }
+  }
+
+  &__btn {
+    margin-top: 20px;
+  }
+
+  &__btn:disabled {
+    cursor: unset;
+    background-color: #818181;
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <script src="js/script.js" type="module"></script>
+</head>
+<body>
+<div class="container-fluid p-0">
+    <header class="bg-success pl-4 pr-4">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a href="#" class="logo">
+                <img src="img/png-logo.png" height="80" width="120" alt="">
+            </a>
+            <div>
+                <button type="button" id="btnLogin" class="btn btn-success d-none" data-toggle="modal" data-target="#baseModal">Вход</button>
+                <button type="button" id="btnCreate" class="btn btn-success d-none" data-toggle="modal" data-target="#baseModal">Создать</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="searchFormBlock" class="pt-5 pl-3 pr-3 pb-5"></div>
+
+
+    <div class="main" style="display: none">
+        <div class="cards-container d-flex justify-content-center align-items-start flex-wrap rounded p-4"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

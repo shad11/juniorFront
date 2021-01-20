@@ -1,0 +1,88 @@
+[
+  {
+    "name": "Moisture Surge 72-Hour Auto-replenishing Hydrator",
+    "producer": "Clinique",
+    "price": 12.5,
+    "imgUrl": "./images/175.jpg",
+    "id": 175,
+    "color": "black"
+  },
+  {
+    "name": "Hyaluron-Filler Day Cream For Combination To Oily Skin",
+    "producer": "Eucerin",
+    "price": 15,
+    "imgUrl": "./images/176.jpg",
+    "id": 176,
+    "color": "black"
+  },
+  {
+    "name": "Effaclar H Derma-Soothing Hydrating Cleansing Cream",
+    "producer": "La Roche-Posay",
+    "price": 10,
+    "imgUrl": "./images/177.jpg",
+    "id": 177,
+    "color": "black"
+  },
+  {
+    "name": "Confidence Transforming Moisturizing Super Cream",
+    "producer": "IT Cosmetics",
+    "price": 20,
+    "imgUrl": "./images/178.jpg",
+    "id": 178,
+    "color": "black"
+  },
+  {
+    "name": "Pyunkang Yul Moisture Cream",
+    "producer": "Pyunkang Yul",
+    "price": 14.45,
+    "imgUrl": "./images/179.jpg",
+    "id": 179,
+    "color": "black"
+  },
+  {
+    "name": "Hyaluronic Acid + Vitamin C + E Face Cream For Sensitive Skin",
+    "producer": "Sane",
+    "price": 5.25,
+    "imgUrl": "./images/180.jpg",
+    "id": 180,
+    "color": "black"
+  },
+  {
+    "name": "Strictly Professional Face Care Vitamin E & A Cream",
+    "producer": "Strictly Professional",
+    "price": 10.40,
+    "imgUrl": "./images/181.jpg",
+    "id": 181,
+    "color": "black"
+  },
+  {
+    "name": "Clarins Maternità Beauty Routine Set",
+    "producer": "Clarins",
+    "price": 29.75,
+    "imgUrl": "./images/182.jpg",
+    "id": 182,
+    "color": "black"
+  },
+  {
+    "name": "Holy Land Cosmetics Avocado Cream",
+    "producer": "Holy Land Cosmetics",
+    "price": 30,
+    "imgUrl": "./images/183.jpg",
+    "id": 183,
+    "color": "black"
+  },
+  {
+    "name": "Dr.Hedison CC Cream SPF38",
+    "producer": "Dr.Hedison",
+    "price": 27.80,
+    "imgUrl": "./images/184.jpg",
+    "id": 184,
+    "color": "black"
+  },
+  {
+    "name": "CeraVe Facial Moisturizing Lotion",
+    "producer": "CeraVe",
+    "price": 15,
+    "id": 185
+  }
+]

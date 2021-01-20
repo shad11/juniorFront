@@ -1,0 +1,35 @@
+.menu-add {
+  color: #fff;
+
+  .menu-link {
+    margin: 0 20px 0 0;
+    display: inline-block;
+    position: relative;
+
+    svg path {
+      fill: #fff;
+    }
+
+    &__cnt {
+      position: absolute;
+      top: -6px;
+      right: 0;
+      color: #fff;
+      background-color: #5c5c5c;
+
+      &--cart {
+        right: -8px;
+      }
+    }
+
+    &:hover * {
+      fill: #ffd3ec;
+      color: #ffd3ec;
+    }
+
+    a.selected * {
+      fill: #ff6a87;
+      color: #ff6a87;
+    }
+  }
+}

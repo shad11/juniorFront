@@ -1,0 +1,6 @@
+export const PRODUCTS_LOADING = 'PRODUCTS_LOADING';
+export const PRODUCTS_SAVE = 'PRODUCTS_SAVE';
+export const FAVOURITES_SAVE = 'FAVOURITES_SAVE';
+export const CART_SAVE = 'CART_SAVE';
+export const FAVOURITES_CNT_SET = 'FAVOURITES_CNT_SET';
+export const CART_CNT_SET = 'CART_CNT_SET';
