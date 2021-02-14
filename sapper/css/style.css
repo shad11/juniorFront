@@ -1,0 +1,40 @@
+td {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #000;
+  box-shadow: 0 0 5px #000;
+}
+
+td span {
+  visibility: hidden;
+}
+
+td.active span,
+table.active td span {
+  visibility: visible;
+}
+
+td.active,
+table.active td {
+  box-shadow: none;
+  border: 1px solid #32302f;
+}
+
+td.flag {
+  background-image: url('../img/red-flag.png');
+  background-size: cover;
+}
+
+table.active td.flag {
+  background-image: none;
+}
+
+td.bomb.active,
+table.active td.bomb {
+  background-color: #f04a56;
+}
+
+.game-btn {
+  visibility: hidden;
+  margin-bottom: 20px;
+}
