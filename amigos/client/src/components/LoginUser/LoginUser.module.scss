@@ -1,0 +1,17 @@
+@import "../../scss/base/base.scss";
+
+.userLogin {
+  width: 100%;
+  margin: 0 auto 20px;
+  box-sizing: border-box;
+}
+
+//min-width=768px
+@include resp-md {
+  .userLogin{
+    border-radius: 10px;
+    background-color: white;
+    max-width: 530px;;
+    @include shadow();
+  }
+}
