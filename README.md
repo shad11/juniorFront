@@ -1,14 +1,17 @@
 ## Code examples
 
-###sapper
+**sapper**
+
 Functional JS
 
-###sp-cards, whack-a-mole
+**sp-cards, whack-a-mole**
+
 JS Classes, modules
 
 whack-a-mole: IIFE
 
-###react-app, amigos
+**react-app, amigos**
+
 React applications
 
 react-app: first steps of online store
