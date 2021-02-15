@@ -20,17 +20,17 @@ const App = () => {
         language: 'ru'
     });
 
-    useEffect(() => {
-        axios.post('/api/auth/login',
-            {
-                email: process.env.REACT_APP_TEST_EMAIL,
-                password: process.env.REACT_APP_TEST_PASSWORD
-            })
-            .then(res => {
-                const token = res.data.token;
-                localStorage.setItem('token', token);
-            });
-    }, []);
+    // useEffect(() => {
+    //     axios.post('/api/auth/login',
+    //         {
+    //             email: process.env.REACT_APP_TEST_EMAIL,
+    //             password: process.env.REACT_APP_TEST_PASSWORD
+    //         })
+    //         .then(res => {
+    //             const token = res.data.token;
+    //             localStorage.setItem('token', token);
+    //         });
+    // }, []);
 
     useEffect(() => {
         const token = localStorage.getItem('token');

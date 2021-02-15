@@ -1,0 +1,26 @@
+.header {
+  padding: 20px 0;
+}
+
+.header__new-game {
+  display: inline-block;
+}
+
+.header__stop-game {
+  display: inline-block;
+}
+
+.header__new-game.disable *, .header__stop-game.disable * {
+  color: grey;
+  pointer-events: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
