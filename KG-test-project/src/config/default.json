@@ -1,0 +1,7 @@
+{
+  "port": 3040,
+  "dbConfig": {
+    "URI": "mongodb+srv://kgAdmin:kgAdmin@cluster0.efhxq.mongodb.net/KG-test?retryWrites=true&w=majority"
+  },
+  "jwtSecret": "KG-test-sachok"
+}
