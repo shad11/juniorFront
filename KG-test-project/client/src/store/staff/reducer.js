@@ -3,7 +3,9 @@ import * as types from './types';
 const initialState = {
     isLoading: false,
     data: [],
-    employeeSelected: null
+    employeeSelected: null,
+    error: null,
+    success: null,
 };
 
 export const reducer = (state = initialState, action) => {
@@ -14,6 +16,10 @@ export const reducer = (state = initialState, action) => {
             return {...state, data: action.payload};
         case types.SELECT_EMPLOYEE:
             return {...state, employeeSelected: action.payload};
+        case types.SET_ERROR:
+            return {...state, error: action.payload};
+        case types.SET_SUCCESS:
+            return {...state, success: action.payload};
         default:
             return state;
     }

@@ -1,1 +1,0 @@
-export const URL_STAFF= '/api/staff';

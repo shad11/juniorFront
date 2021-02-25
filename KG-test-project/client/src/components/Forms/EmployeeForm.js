@@ -1,14 +1,11 @@
 import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useMessage } from "../../hooks/message.hook";
 import { TextInput, RadioButton } from "../Common/Inputs";
 import { EmployeeSchema } from "../Validation";
 import Button from "../Button";
-import { userSelectors } from "../../store/user";
 import { staffSelectors, staffOperations, staffActions } from "../../store/staff";
-import { URL_STAFF } from "../../constants/url";
 
 const mainInitialValues = {
     fullName: '',
@@ -24,10 +21,19 @@ const sex = [
 ]
 
 const EmployeeForm = () => {
-    const token = useSelector(userSelectors.getToken);
-    const employeeSelected = useSelector(staffSelectors.getSelected);
     const dispatch = useDispatch();
     const message = useMessage();
+    const employeeSelected = useSelector(staffSelectors.getSelected);
+    const error = useSelector(staffSelectors.getError);
+    const success = useSelector(staffSelectors.getSuccess);
+
+    useEffect(() => {
+        error && message(error.message);
+    }, [error]);
+
+    useEffect(() => {
+        success && message(success.message);
+    }, [success]);
 
     const initialValues = !employeeSelected ? mainInitialValues : employeeSelected;
 
@@ -36,35 +42,21 @@ const EmployeeForm = () => {
             window.M && window.M.updateTextFields();
         }
 
-        return () => dispatch(staffActions.selectEmployee(null));
+        return () => {
+            dispatch(staffActions.selectEmployee(null));
+            dispatch(staffActions.setError(null));
+            dispatch(staffActions.setSuccess(null));
+        }
     }, []);
 
-    const handleSubmit = (values, { resetForm, setSubmitting, setStatus }) => {
+    const handleSubmit = async (values, { resetForm }) => {
+        values.fullName.trim();
+
         if (!employeeSelected) {
-            axios.post(`${URL_STAFF}`, values, {
-                headers: { "Authorization": token }
-            })
-                .then( ({ data }) => {
-                    dispatch(staffOperations.addEmployee(data));
-
-                    message(`Employee ${data.fullName} has been created!`)
-                    setStatus({ success: true });
-                    resetForm({});
-                })
-                .catch(({ response }) => message(response.data.message))
-                .finally(() => setSubmitting(false));
+            await dispatch(staffOperations.addEmployee(values));
+            resetForm({});
         } else {
-            axios.put(`${URL_STAFF}`, values, {
-                headers: { "Authorization": token }
-            })
-                .then( ({ data }) => {
-                    dispatch(staffOperations.editEmployee(data));
-
-                    message(`Employee ${data.fullName} has been edited!`)
-                    setStatus({ success: true });
-                })
-                .catch(({ response }) => message(response.data.message))
-                .finally(() => setSubmitting(false));
+            await dispatch(staffOperations.editEmployee(values));
         }
     };
 
@@ -73,7 +65,6 @@ const EmployeeForm = () => {
             initialValues={initialValues}
             validationSchema={EmployeeSchema}
             onSubmit={handleSubmit}
-            on
         >
             {({ isSubmitting }) => (
                 <Form>

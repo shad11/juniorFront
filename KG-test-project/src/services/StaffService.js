@@ -4,7 +4,7 @@ const UserError = require("../errors/UserError");
 exports.createEmployee = async (data, userId) => {
     const employee = await EmployeeModel
         .findOne({ fullName:
-                { $regex: new RegExp("^" + data.fullName, "i") }})
+                { $regex: new RegExp("^" + data.fullName + "$", "i") }})
         .exec();
 
     if (employee) {

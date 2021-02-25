@@ -24,10 +24,8 @@ const RegisterForm = () => {
         error && message(error.message);
     }, [error]);
 
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values) => {
         await dispatch(userOperations.register(values));
-
-        setSubmitting(false);
     };
 
     return (<>

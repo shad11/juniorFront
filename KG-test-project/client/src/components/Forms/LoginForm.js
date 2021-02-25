@@ -23,10 +23,8 @@ const LoginForm = () => {
         error && message(error.message);
     }, [error]);
 
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (values) => {
         await dispatch(userOperations.logIn(values));
-
-        setSubmitting(false);
     };
 
     return (<>

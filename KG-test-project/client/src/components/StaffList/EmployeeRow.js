@@ -1,18 +1,14 @@
 import React, { useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
-import axios from "axios";
 import { format } from "date-fns";
 import { useMessage } from "../../hooks/message.hook";
-import { userSelectors } from "../../store/user";
 import { staffActions, staffOperations } from "../../store/staff";
 import Button from "../Button";
-import { URL_STAFF} from "../../constants/url";
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const EmployeeRow = ({ elem }) => {
-    const token = useSelector(userSelectors.getToken);
     const dispatch = useDispatch();
     const history = useHistory();
     const message = useMessage();
@@ -23,18 +19,9 @@ const EmployeeRow = ({ elem }) => {
         history.push(`/edit/${data._id}`);
     }, []);
 
-    const remove = useCallback((id, fullName) => {
-        axios.delete(URL_STAFF, {
-            headers: { "Authorization": token},
-            data: {
-                id
-            }
-        })
-            .then(res => {
-                dispatch(staffOperations.removeEmployee(id));
-                message(`Employee ${fullName} was deleted`);
-            })
-            .catch(({ response }) => message(response.data.message));
+    const remove = useCallback(async (id, fullName) => {
+        await dispatch(staffOperations.removeEmployee({ id, fullName }));
+        message(`Employee ${fullName} has been deleted`);
     }, []);
 
     const confirmRemove = useCallback(({ _id: id, fullName }) => {

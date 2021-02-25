@@ -1,41 +1,75 @@
-import axios from "axios";
-import * as actions from './actions';
-import { URL_STAFF } from "../../constants/url";
+import * as actions from "./actions";
+import { employeeApi } from "../../services";
 
-export const loadStaff = () => dispatch => {
+const _setError = (msg) => dispatch => {
+    dispatch(actions.setSuccess(null))
+    dispatch(actions.setError({ message: msg}));
+};
+
+const _setData = (data) => dispatch => {
+    dispatch(actions.savingStaff(data));
+    dispatch(actions.setError(null));
+}
+
+export const loadStaff = () => async dispatch => {
     dispatch(actions.staffLoading(true));
 
-    axios.get(URL_STAFF)
-        .then(({ data }) => {
-            dispatch(actions.savingStaff(data));
-            dispatch(actions.staffLoading(false));
-        })
-        .catch(error => dispatch(actions.staffLoading(false)));
+    try {
+        const data = await employeeApi.getAll();
+
+        dispatch(actions.savingStaff(data));
+        dispatch(actions.staffLoading(false));
+    } catch(error) {
+        dispatch(actions.staffLoading(false));
+    }
 };
 
-export const addEmployee = (employee) => (dispatch, getState) => {
-    const { staff } = getState();
+export const addEmployee = (values) => async (dispatch, getState) => {
+    const { user, staff } = getState();
+    const { token } = user;
     const { data } = staff;
 
-    dispatch(actions.savingStaff([employee, ...data]));
-};
+    try {
+        const employee = await employeeApi.create(values, token);
 
-export const editEmployee = (employee) => (dispatch, getState) => {
-    const { staff } = getState();
+        dispatch(_setData([employee, ...data]));
+        dispatch(actions.setSuccess({ message: `Employee ${employee.fullName} was added!`}));
+    } catch ({ response }) {
+        dispatch(_setError(response.data.message));
+    }
+}
+
+export const editEmployee = (values) => async (dispatch, getState) => {
+    const { user, staff } = getState();
+    const { token } = user;
     const { data } = staff;
 
-    const index = data.findIndex(elem => elem._id === employee._id);
-    data[index] = employee;
+    try {
+        const employee = await employeeApi.edit(values, token);
 
-    dispatch(actions.selectEmployee(employee));
-    dispatch(actions.savingStaff(data));
-};
+        const index = data.findIndex(elem => elem._id === employee._id);
+        data[index] = employee;
 
-export const removeEmployee = (employeeId) => (dispatch, getState) => {
-    const { staff } = getState();
+        dispatch(actions.selectEmployee(employee));
+        dispatch(_setData(data));
+        dispatch(actions.setSuccess({ message: `Employee ${employee.fullName} has been edit!`}));
+    } catch ({ response }) {
+        dispatch(_setError(response.data.message));
+    }
+}
+
+export const removeEmployee = ({ id, fullName }) => async (dispatch, getState) => {
+    const { user, staff } = getState();
+    const { token } = user;
     const { data } = staff;
 
-    const dataNew = data.filter(elem => elem._id !== employeeId);
+    try {
+        await employeeApi.delete(id, token);
 
-    dispatch(actions.savingStaff(dataNew));
+        const dataNew = data.filter(elem => elem._id !== id);
+
+        dispatch(_setData(dataNew));
+    } catch ({ response }) {
+        dispatch(_setError(response.data.message));
+    }
 };

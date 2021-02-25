@@ -14,3 +14,13 @@ export const selectEmployee = data => ({
     type: types.SELECT_EMPLOYEE,
     payload: data
 });
+
+export const setError = error => ({
+    type: types.SET_ERROR,
+    payload: error
+});
+
+export const setSuccess = data => ({
+    type: types.SET_SUCCESS,
+    payload: data
+});

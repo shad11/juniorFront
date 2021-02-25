@@ -4,9 +4,9 @@ import { staffSelectors, staffOperations } from "../../store/staff";
 import EmployeeRow from "./EmployeeRow";
 
 const StaffList = () => {
+    const dispatch = useDispatch();
     const isLoading = useSelector(staffSelectors.isLoading);
     const data = useSelector(staffSelectors.getStaff);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!data.length) {
