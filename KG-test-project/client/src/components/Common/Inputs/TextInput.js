@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { useField } from "formik";
 
 export const TextInput = ({label, className='input-field', ...props}) => {
@@ -17,4 +17,4 @@ export const TextInput = ({label, className='input-field', ...props}) => {
     )
 };
 
-export default memo(TextInput);
+export default TextInput;

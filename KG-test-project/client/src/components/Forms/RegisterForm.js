@@ -1,14 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useMessage } from "../../hooks/message.hook";
-import { TextInput } from "./Inputs";
+import { TextInput } from "../Common/Inputs";
 import { RegisterSchema } from "../Validation";
 import Button from "../Button";
 import { userOperations, userSelectors } from "../../store/user";
-import { URL_AUTH } from "../../constants/url";
 
 const initialValues = {
     login: '',
@@ -22,14 +20,8 @@ const RegisterForm = () => {
     const message = useMessage();
 
     const handleSubmit = (values, { resetForm, setSubmitting }) => {
-        axios.post(`${URL_AUTH}/register`, values)
-            .then( ({ data }) => {
-                dispatch(userOperations.logIn({
-                    token: data.token,
-                    data: data.user
-                }));
-                resetForm({});
-            })
+        dispatch(userOperations.register(values))
+            .then(() => resetForm({}))
             .catch(({ response }) => message(response.data.message))
             .finally(() => setSubmitting(false));
     };
@@ -60,4 +52,4 @@ const RegisterForm = () => {
     </>)
 };
 
-export default memo(RegisterForm);
+export default RegisterForm;

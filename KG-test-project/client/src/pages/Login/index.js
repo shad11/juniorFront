@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React from "react";
 import { LoginForm } from "../../components/Forms";
 
 const Login = () => (
@@ -14,4 +14,4 @@ const Login = () => (
     </div>
 );
 
-export default memo(Login);
+export default Login;

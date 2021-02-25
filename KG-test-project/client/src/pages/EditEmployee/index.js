@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../../components/Header";
 import { EmployeeForm } from "../../components/Forms";
@@ -29,4 +29,4 @@ const EditEmployee = () => {
     );
 };
 
-export default memo(EditEmployee);
+export default EditEmployee;

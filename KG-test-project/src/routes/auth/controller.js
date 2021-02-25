@@ -46,6 +46,7 @@ exports.login = async (req, res) => {
         }
 
         const data = await UserService.loginUser(req.body);
+        console.log(data);
 
         if (data instanceof UserError) {
             return res.status(data.code)

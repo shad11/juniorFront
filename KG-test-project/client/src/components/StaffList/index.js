@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { staffSelectors, staffOperations } from "../../store/staff";
 import EmployeeRow from "./EmployeeRow";
@@ -43,4 +43,4 @@ const StaffList = () => {
     </>)
 };
 
-export default memo(StaffList);
+export default StaffList;

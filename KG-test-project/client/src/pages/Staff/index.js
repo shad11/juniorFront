@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React from "react";
 import Header from "../../components/Header";
 import StaffList from "../../components/StaffList";
 
@@ -10,4 +10,4 @@ const Staff = () => (
     </>
 );
 
-export default memo(Staff);
+export default Staff;

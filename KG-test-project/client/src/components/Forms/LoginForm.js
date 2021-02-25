@@ -1,14 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useMessage } from "../../hooks/message.hook";
-import { TextInput } from "./Inputs";
+import { TextInput } from "../Common/Inputs";
 import { LoginSchema } from "../Validation";
 import Button from "../Button";
 import { userOperations, userSelectors } from "../../store/user";
-import { URL_AUTH } from "../../constants/url";
 
 const initialValues = {
     email: '',
@@ -21,15 +19,8 @@ const LoginForm = () => {
     const message = useMessage();
 
     const handleSubmit = (values, { resetForm, setSubmitting }) => {
-        axios.post(`${URL_AUTH}/login`, values)
-            .then( ({ data }) => {
-                dispatch(userOperations.logIn({
-                    token: data.token,
-                    data: data.user
-                }));
-
-                resetForm({});
-            })
+        dispatch(userOperations.logIn(values))
+            .then(() => resetForm({}))
             .catch(({ response }) => message(response.data.message))
             .finally(() => setSubmitting(false));
     };
@@ -59,4 +50,4 @@ const LoginForm = () => {
     </>)
 };
 
-export default memo(LoginForm);
+export default LoginForm;

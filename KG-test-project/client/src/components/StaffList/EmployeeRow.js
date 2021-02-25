@@ -1,4 +1,4 @@
-import React, { useCallback, memo } from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
@@ -78,4 +78,4 @@ const EmployeeRow = ({ elem }) => {
     )
 }
 
-export default memo(EmployeeRow);
+export default EmployeeRow;

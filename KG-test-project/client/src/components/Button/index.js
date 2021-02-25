@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import './Button.scss';
 
 const Button = ({ children, className, onClick, ...rest}) => (
@@ -7,4 +7,4 @@ const Button = ({ children, className, onClick, ...rest}) => (
     </button>
 );
 
-export default memo(Button);
+export default Button;

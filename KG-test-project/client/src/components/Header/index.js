@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { userSelectors, userOperations } from "../../store/user";
@@ -27,4 +27,4 @@ const Header = ({ isMain = true }) => {
     );
 };
 
-export default memo(Header);
+export default Header;

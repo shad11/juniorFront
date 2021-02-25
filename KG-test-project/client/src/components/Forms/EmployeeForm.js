@@ -1,9 +1,9 @@
-import React, { memo, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useMessage } from "../../hooks/message.hook";
-import { TextInput, RadioButton } from "./Inputs";
+import { TextInput, RadioButton } from "../Common/Inputs";
 import { EmployeeSchema } from "../Validation";
 import Button from "../Button";
 import { userSelectors } from "../../store/user";
@@ -95,4 +95,4 @@ const EmployeeForm = () => {
     </>)
 };
 
-export default memo(EmployeeForm);
+export default EmployeeForm;

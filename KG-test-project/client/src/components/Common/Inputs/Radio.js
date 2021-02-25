@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import React, { useEffect } from "react";
 import { useField } from "formik";
 
 const Radio = ({label, className='', name, options, ...props}) => {
@@ -25,4 +25,4 @@ const Radio = ({label, className='', name, options, ...props}) => {
     )
 };
 
-export default memo(Radio);
+export default Radio;
