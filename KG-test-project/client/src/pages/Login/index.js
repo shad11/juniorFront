@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginForm } from "../../components/Forms";
+import { LoginForm }  from "../../components/Forms";
 
 const Login = () => (
     <div className='row'>

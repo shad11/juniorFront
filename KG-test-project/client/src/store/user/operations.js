@@ -1,5 +1,6 @@
 import * as actions from './actions';
 import { authApi } from '../../services';
+import {userOperations} from "./index";
 
 const _logUser = (token, data) => dispatch => {
     localStorage.setItem('token', token);
@@ -10,25 +11,39 @@ const _logUser = (token, data) => dispatch => {
 }
 
 export const register = ({ login, email, password}) => async (dispatch) => {
-    const { token, user: data } = await authApi.register(login, email, password);
+    try {
+        const { token, user: data } = await authApi.register(login, email, password);
 
-    dispatch(_logUser(token, data));
+        dispatch(_logUser(token, data));
+        dispatch(actions.setError(null));
+    } catch ({ response }) {
+        dispatch(actions.setError({ message: response.data.message}));
+    }
 }
 
 export const logIn = ({ email, password }) => async (dispatch) => {
-    const { token, user: data } = await authApi.logIn(email, password);
+    try {
+        const { token, user: data } = await authApi.logIn(email, password);
 
-    dispatch(_logUser(token, data));
+        dispatch(_logUser(token, data));
+        dispatch(actions.setError(null));
+    } catch ({ response }) {
+        dispatch(actions.setError({ message: response.data.message}));
+    }
 };
 
 export const verify = (token) => async (dispatch) => {
-    const { dataNew, success } = await authApi.verify(token);
+    try {
+        const { dataNew, success } = await authApi.verify(token);
 
-    if (success) {
-        dispatch(_logUser(dataNew.token, dataNew.user));
+        if (success) {
+            dispatch(_logUser(dataNew.token, dataNew.user));
+        }
+        else
+            dispatch(logOut());
+    } catch (error) {
+        dispatch(userOperations.logOut());
     }
-    else
-        dispatch(logOut());
 }
 
 export const logOut = () => dispatch => {

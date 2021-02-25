@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Formik, Form } from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -17,13 +17,17 @@ const initialValues = {
 const RegisterForm = () => {
     const dispatch = useDispatch();
     const isAuth = useSelector(userSelectors.isAuth);
+    const error = useSelector(userSelectors.getError);
     const message = useMessage();
 
-    const handleSubmit = (values, { resetForm, setSubmitting }) => {
-        dispatch(userOperations.register(values))
-            .then(() => resetForm({}))
-            .catch(({ response }) => message(response.data.message))
-            .finally(() => setSubmitting(false));
+    useEffect(() => {
+        error && message(error.message);
+    }, [error]);
+
+    const handleSubmit = async (values, { setSubmitting }) => {
+        await dispatch(userOperations.register(values));
+
+        setSubmitting(false);
     };
 
     return (<>

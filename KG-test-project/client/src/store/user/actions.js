@@ -14,3 +14,8 @@ export const setData = data => ({
     type: types.SET_DATA,
     payload: data,
 });
+
+export const setError = errorMsg => ({
+    type: types.SET_ERROR,
+    payload: errorMsg
+})

@@ -12,8 +12,7 @@ const App = () => {
         const token = localStorage.getItem('token');
 
         if (token) {
-            dispatch(userOperations.verify(token))
-                .catch(() => dispatch(userOperations.logOut()));
+            dispatch(userOperations.verify(token));
         }
     }, []);
 
