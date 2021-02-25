@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { confirmAlert } from 'react-confirm-alert';
+import { confirmAlert } from "react-confirm-alert";
 import { format } from "date-fns";
+import PropTypes from "prop-types";
 import { useMessage } from "../../hooks/message.hook";
 import { staffActions, staffOperations } from "../../store/staff";
 import Button from "../Button";
@@ -63,6 +64,18 @@ const EmployeeRow = ({ elem }) => {
             </td>
         </tr>
     )
-}
+};
+
+EmployeeRow.propTypes = {
+    elem: PropTypes.shape({
+        _id: PropTypes.number,
+        fullName: PropTypes.string,
+        sex: PropTypes.string,
+        phone: PropTypes.string,
+        createDate: PropTypes.number,
+        salary: PropTypes.number,
+        position: PropTypes.string,
+    })
+};
 
 export default EmployeeRow;

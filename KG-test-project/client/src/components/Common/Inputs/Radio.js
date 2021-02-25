@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useField } from "formik";
+import PropTypes from "prop-types";
 
-const Radio = ({label, className='', name, options, ...props}) => {
+const Radio = ({className, name, options, ...props}) => {
     const [field, meta, helpers] = useField(name);
     const { setValue } = helpers;
     const { value: initVal} = field;
@@ -23,6 +24,16 @@ const Radio = ({label, className='', name, options, ...props}) => {
             ))}
         </div>
     )
+};
+
+Radio.propTypes = {
+    className: PropTypes.string,
+    name: PropTypes.string,
+    options: PropTypes.array.isRequired
+};
+
+Radio.defaultProps = {
+    options: []
 };
 
 export default Radio;

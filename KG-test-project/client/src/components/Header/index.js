@@ -1,10 +1,11 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 import { userSelectors, userOperations } from "../../store/user";
 import "./Header.scss";
 
-const Header = ({ isMain = true }) => {
+const Header = ({ isMain }) => {
     const userDate = useSelector(userSelectors.getDate);
     const dispatch = useDispatch();
 
@@ -25,6 +26,14 @@ const Header = ({ isMain = true }) => {
             </div>
         </nav>
     );
+};
+
+Header.propTypes = {
+    isMain: PropTypes.bool.isRequired,
+};
+
+Header.defaultProps = {
+    isMain: true,
 };
 
 export default Header;
