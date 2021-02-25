@@ -4,7 +4,7 @@ const UserError = require("../errors/UserError");
 exports.createEmployee = async (data, userId) => {
     const employee = await EmployeeModel
         .findOne({ fullName:
-                { $regex: new RegExp("^" + data.fullName + "$", "i") }})
+                { $regex: new RegExp(`^${data.fullName}$`, "i") }})
         .exec();
 
     if (employee) {
@@ -24,10 +24,10 @@ exports.createEmployee = async (data, userId) => {
 exports.editEmployee = async (data) => {
     const checkEmployee = await EmployeeModel
         .findOne({ fullName:
-            { $regex: new RegExp("^" + data.fullName, "i") }})
+            { $regex: new RegExp(`^${data.fullName}$`, "i") }})
         .exec();
 
-    if (checkEmployee._id !== data._id) {
+    if (checkEmployee && checkEmployee._id !== data._id) {
         return new UserError(400, 'Such Full Name has another employee!');
     }
 
