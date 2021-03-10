@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef  } from "react";
-import { useDispatch } from "react-redux";
-import { trackerOperations } from "../../store/tracker";
 
-const Tracker = ({ id, name, period: initialPeriod, active}) => {
+const Tracker2 = ({ id, name, period: initialPeriod, active}) => {
     const [period, setPeriod] = useState(initialPeriod);
     const [isActive, setIsActive] = useState(active);
+    const prevFuncToLS = useRef();
     const timer = useRef(0);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         if (isActive) {
@@ -16,24 +14,44 @@ const Tracker = ({ id, name, period: initialPeriod, active}) => {
         return () => clearTimeout(timer.current);
     }, []);
 
+    useEffect(() => {
+        window.removeEventListener('beforeunload', prevFuncToLS.current);
+        prevFuncToLS.current = () => trackerToLS(period, isActive);
+
+        window.addEventListener('beforeunload', prevFuncToLS.current);
+
+        return () => {
+            window.removeEventListener('beforeunload', prevFuncToLS.current);
+        }
+    }, [period, isActive]);
+
+    const trackerToLS = (periodNew, activeNew) => {
+        const arr = JSON.parse(localStorage.getItem('trackers'));
+        const elem = {id, name, ss: periodNew, active: activeNew };
+
+        if (arr) {
+            const newArr = [...arr, elem];
+            localStorage.setItem('trackers', JSON.stringify(newArr));
+        } else {
+            localStorage.setItem('trackers', JSON.stringify([elem]));
+        }
+    };
+
     const periodChange = (oldPeriod) => {
         timer.current = setTimeout(() => {
             periodChange(oldPeriod + 1000);
-            dispatch(trackerOperations.changePeriod(id, oldPeriod + 1000));
         }, 1000);
 
         setPeriod(oldPeriod);
-    }
+    };
 
     const stop = () => {
         clearTimeout(timer.current);
-        dispatch(trackerOperations.changeIsActive(id, false));
         setIsActive(false);
     };
 
     const start = () => {
         periodChange(period);
-        dispatch(trackerOperations.changeIsActive(id, true));
         setIsActive(true);
     }
 
@@ -46,4 +64,4 @@ const Tracker = ({ id, name, period: initialPeriod, active}) => {
     )
 };
 
-export default Tracker;
+export default Tracker2;

@@ -9,9 +9,7 @@ const TrackerList = () => {
     return (<>
         {data.map(tracker => <Tracker
             key={tracker.id}
-            name={tracker.name}
-            ss={tracker.ss}
-            isRun={tracker.isRun}
+            {...tracker}
         />)}
     </>);
 }

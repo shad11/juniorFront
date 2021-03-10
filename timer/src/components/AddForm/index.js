@@ -7,7 +7,7 @@ const AddForm = () => {
 
     const addTracker = (e) => {
         e.preventDefault();
-        dispatch(trackerOperations.addTracker({id: Date.now(), name: 'Test', ss: 0, isRun: true}));
+        dispatch(trackerOperations.addTracker({id: Date.now(), name: 'Test', period: 0, active: true}));
     };
 
     return (<>
