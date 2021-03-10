@@ -29,7 +29,7 @@ export const changeIsActive = (id, active) => (dispatch, getState) => {
     dispatch(actions.saveTrackers(data));
 }
 
-export const deleteTracker = (id) => (dispatch, getState) => {
+export const removeTracker = (id) => (dispatch, getState) => {
     const { tracker: trackerStore } = getState();
     const { data } = trackerStore;
 
@@ -44,4 +44,17 @@ export const saveToLS = () => (dispatch, getState) => {
 
     localStorage.setItem('trackers', JSON.stringify(data));
     localStorage.setItem('trackerEndTime', Date.now());
+}
+
+export const getTrackers = () => (dispatch) => {
+    const data = JSON.parse(localStorage.getItem('trackers'));
+    const endTime = localStorage.getItem('trackerEndTime')
+
+    data.map(tracker => 
+        tracker.active 
+            ? tracker.period + Date.now() - endTime
+            : tracker.period
+    );
+
+    dispatch(actions.saveTrackers(data));
 }
