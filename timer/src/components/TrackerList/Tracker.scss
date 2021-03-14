@@ -1,0 +1,59 @@
+.tracker-list {
+  margin: 26px auto 0;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.43px;
+
+  .tracker {
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    &.active {
+      color: #3faf6c;
+      background-color: #fdfdf6;
+    }
+
+    &__name {
+      margin: 0 25px;
+    }
+
+    &__time {
+      float: left;
+      margin-right: 21px;
+    }
+
+    &__btn {
+      margin: 0 8px;
+      width: 24px;
+      height: 24px;
+      border: none;
+      cursor: pointer;
+      background: none;
+    }
+
+    &__btn:focus {
+      outline: none;
+    }
+  }
+
+  .tracker:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (max-width: 559px) {
+  .tracker-list {
+    .tracker__name {
+      margin: 0 12px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .tracker__period {
+      min-width: 150px;
+      text-align: right;
+    }
+  }
+}

@@ -6,3 +6,10 @@
   line-height: 1.35;
   letter-spacing: normal;
 }
+
+@media screen and (min-width: 320px) {
+  .header {
+    margin: 63px 0;
+    font-size: 38px;
+  }
+}

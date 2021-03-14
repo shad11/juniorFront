@@ -10,4 +10,4 @@ export const reducer = (state = initialState, action) => {
             return {...state, data: action.payload}
     }
     return state;
-};
+}

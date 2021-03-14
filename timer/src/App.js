@@ -10,16 +10,17 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(trackerOperations.getTrackers());
     window.addEventListener('beforeunload', () => (dispatch(trackerOperations.saveToLS())));
 
     return () => window.removeEventListener('beforeunload', () => (dispatch(trackerOperations.saveToLS())));
   }, []);
 
-  return <>
+  return <div className='container'>
     <Header />
     <AddForm />
     <TrackerList />
-  </>;
+  </div>;
 }
 
 export default App;

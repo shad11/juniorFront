@@ -1,0 +1,42 @@
+.add-form {
+  margin: 0 auto;
+  position: relative;
+
+  &__input {
+    width: 100%;
+    padding: 14px 22px;
+    font-size: 17px;
+    text-align: left;
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    border-radius: 23px;
+  }
+
+  &__input:focus {
+    outline: none;
+  }
+
+  &__btn {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    border: none;
+    cursor: pointer;
+    background: none;
+
+    img {
+      height: 56px;
+    }
+  }
+
+  &__btn:focus {
+    outline: none;
+  }
+}
+
+
+@media screen and (min-width: 320px) {
+  .add-form {
+    width: 295px;
+  }
+}
