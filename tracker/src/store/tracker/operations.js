@@ -47,8 +47,8 @@ export const saveToLS = () => (dispatch, getState) => {
 }
 
 export const getTrackers = () => (dispatch) => {
-    const data = JSON.parse(localStorage.getItem('trackers'));
-    const endTime = localStorage.getItem('trackerEndTime')
+    const data = JSON.parse(localStorage.getItem('trackers')) || [];
+    const endTime = localStorage.getItem('trackerEndTime');
 
     data.map(tracker => 
         tracker.active 
