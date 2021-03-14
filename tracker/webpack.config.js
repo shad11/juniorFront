@@ -32,12 +32,6 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: "../",
-                        }
-                    },
                     "css-loader",
                     {
                         loader: "postcss-loader",
@@ -54,9 +48,11 @@ module.exports = {
             }
         ]
     },
-    // resolve: {
-    //     extensions: ['.js', '.jsx']
-    // },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "css/[name].css"
+        })
+    ],
     devServer: {
         contentBase: './',
         port: 3000
