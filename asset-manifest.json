@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/shad11/shad11.github.io/tracker/static/css/main.5a845f3d.chunk.css",
+    "main.js": "/shad11/shad11.github.io/tracker/static/js/main.d77f8692.chunk.js",
+    "main.js.map": "/shad11/shad11.github.io/tracker/static/js/main.d77f8692.chunk.js.map",
+    "runtime-main.js": "/shad11/shad11.github.io/tracker/static/js/runtime-main.3ef55df1.js",
+    "runtime-main.js.map": "/shad11/shad11.github.io/tracker/static/js/runtime-main.3ef55df1.js.map",
+    "static/js/2.62dd3cd3.chunk.js": "/shad11/shad11.github.io/tracker/static/js/2.62dd3cd3.chunk.js",
+    "static/js/2.62dd3cd3.chunk.js.map": "/shad11/shad11.github.io/tracker/static/js/2.62dd3cd3.chunk.js.map",
+    "index.html": "/shad11/shad11.github.io/tracker/index.html",
+    "static/css/main.5a845f3d.chunk.css.map": "/shad11/shad11.github.io/tracker/static/css/main.5a845f3d.chunk.css.map",
+    "static/js/2.62dd3cd3.chunk.js.LICENSE.txt": "/shad11/shad11.github.io/tracker/static/js/2.62dd3cd3.chunk.js.LICENSE.txt",
+    "static/media/pause_circle.b18b6224.svg": "/shad11/shad11.github.io/tracker/static/media/pause_circle.b18b6224.svg",
+    "static/media/play_circle.69e4e2a1.svg": "/shad11/shad11.github.io/tracker/static/media/play_circle.69e4e2a1.svg",
+    "static/media/play_circle_green.8023ef46.svg": "/shad11/shad11.github.io/tracker/static/media/play_circle_green.8023ef46.svg",
+    "static/media/remove_circle.6c0262a4.svg": "/shad11/shad11.github.io/tracker/static/media/remove_circle.6c0262a4.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ef55df1.js",
+    "static/js/2.62dd3cd3.chunk.js",
+    "static/css/main.5a845f3d.chunk.css",
+    "static/js/main.d77f8692.chunk.js"
+  ]
+}
