@@ -20,14 +20,14 @@ const Tracker = ({ id, name, period: initialPeriod, active}) => {
         return () => clearTimeout(timer.current);
     }, []);
 
-    const periodChange = useCallback((oldPeriod) => {
+    const periodChange = (oldPeriod) => {
         timer.current = setTimeout(() => {
             periodChange(oldPeriod + 1000);
             dispatch(trackerOperations.changePeriod(id, oldPeriod + 1000));
         }, 1000);
 
         setPeriod(oldPeriod);
-    }, []);
+    };
 
     const stop = useCallback(() => {
         clearTimeout(timer.current);
@@ -35,11 +35,11 @@ const Tracker = ({ id, name, period: initialPeriod, active}) => {
         setIsActive(false);
     }, []);
 
-    const start = useCallback(() => {
+    const start = () => {
         periodChange(period);
         dispatch(trackerOperations.changeIsActive(id, true));
         setIsActive(true);
-    }, []);
+    };
 
     const removeTracker = useCallback(trackerId => {
         dispatch(trackerOperations.removeTracker(trackerId));
